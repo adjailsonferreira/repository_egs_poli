@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observatório de Projetos</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/homepage.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/" style="color: #8C2929;">Página inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #8C2929;">Navegar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #8C2929;">Publicar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #8C2929;">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #8C2929;">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h1>Projetos</h1>
+        <section class="projects-sect">
+            <div class="card" style="width: 18rem;">
+                <div style="width: 100%; height: 10rem; background-color: gray;"></div>
+                <div class="card-content">
+                    <h5 class="card-title">Projeto</h5>
+                    <p class="card-text">Descricao simples do projeto</p>
+                    <a href="#" class="btn btn-primary">Visualizar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
