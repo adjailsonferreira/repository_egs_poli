@@ -13,11 +13,12 @@ app.secret_key = os.getenv("secret_key")
 user = auth.current_user
 
 @app.route("/index")
-@app.route("/")
+@app.route("/test")
 def index():
     return render_template("index.html",dados="Olá Mundo! (Exemplo de enviar dados para a página)")
 
 
+@app.route("/", methods=['POST', 'GET'])
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     if('user' in session):
