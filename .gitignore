@@ -1,1 +1,19 @@
-__pycache__
+__pycache__# Arquivos Python
+*.pyc
+__pycache__/
+
+# Arquivos de ambiente
+.env
+
+# Arquivos de log
+*.log
+
+# Arquivos de banco de dados SQLite
+db.sqlite
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pasta do ambiente
+env
