@@ -29,7 +29,8 @@ def login():
             user = auth.sign_in_with_email_and_password(email, password)
             session['user'] = user
             return redirect(url_for('homepage'))
-        except: 
+        except Exception as e:
+            print(e) 
             return render_template("Falha no Login")
 
     else:
