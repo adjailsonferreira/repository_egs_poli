@@ -30,8 +30,7 @@ def login():
             session['user'] = user
             return redirect(url_for('homepage'))
         except Exception as e:
-            print(e) 
-            return render_template("Falha no Login")
+            return render_template("/widgets/msg_error.html", msg=e)
 
     else:
         return render_template("/views/auth/login/login.html")
@@ -44,8 +43,8 @@ def cadastro():
         password = request.form.get('password')
         try:
             user = auth.create_user_with_email_and_password(email, password)
-        except:
-            return 'Falha no cadastro'
+        except Exception as e:
+            return render_template("/widgets/msg_error.html",msg=e)
     return render_template("/views/auth/cadastro/cadastro.html")
 
 @app.route("/homepage", methods=['POST', 'GET'])
