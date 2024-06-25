@@ -12,17 +12,18 @@ auth = firebase.auth()
 app.secret_key = os.getenv("secret_key")
 user = auth.current_user
 
-@app.route("/index")
-@app.route("/test")
-def index():
-    return render_template("index.html",dados="Olá Mundo! (Exemplo de enviar dados para a página)")
 
+
+@app.route("/")
+@app.route("/dashboard")
+def dashboard():
+    return render_template("/views/dashboard/homepage.html")
 
 @app.route("/", methods=['POST', 'GET'])
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     if('user' in session):
-        return render_template('/views/dashboard/homepage.html')
+        return render_template('/views/admin/homepage/admin-homepage.html')
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -56,7 +57,7 @@ def homepage():
         token = user_session['idToken']
         autenticado = autenticar_usuario(token)
         if autenticado:
-            return render_template("/views/dashboard/homepage.html", user_email=user_session['email'])
+            return render_template("/views/admin/homepage/homepage.html", user_email=user_session['email'])
         else:
             return "Falha na autenticação do usuário"
     except:
