@@ -8,6 +8,7 @@ from db.model import inscricaoProjeto
 from db.config_db import get_session
 from sqlalchemy.exc import SQLAlchemyError
 from flask_sqlalchemy import SQLAlchemy
+from backend.query import inscricaoProjeto
 
 app = Flask(__name__)
 
