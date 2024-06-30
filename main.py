@@ -119,6 +119,10 @@ def inscricaoprojeto():
             return ("Falha")
     return render_template("Sucesso")
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 if __name__ in "__main__":
   app.run (debug=True)
