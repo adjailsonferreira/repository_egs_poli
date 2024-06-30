@@ -91,8 +91,8 @@ def autenticar_usuario(token):
     else:
         return False
 
-@app.route("/inscricaoprojeto", methods=['POST', 'GET'])
-def inscricaoprojeto():
+@app.route("/inscricao", methods=['GET', 'POST'])
+def inscricaoProjeto():
     user_session = session.get('user')
     if request.method == 'POST':
         nome= request.form['nome']
@@ -118,7 +118,7 @@ def inscricaoprojeto():
             db.session.rollback()
             print(f"falha {e}")
             return ("Falha")
-    return render_template("Sucesso")
+    return render_template("/views/forms/input_projeto.html")
 
 @app.route("/logout")
 def logout():
