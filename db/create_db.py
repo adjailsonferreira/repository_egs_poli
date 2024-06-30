@@ -1,7 +1,6 @@
 from config_db import engine, Base
 from sqlalchemy.exc import SQLAlchemyError
-from model import  InformacoesIndicado, PreinscricaoPessoa, EnvioProjeto, PreinscricaoProjeto
-
+from model import  inscricaoProjeto
 try:
     print("creating database ...")
     Base.metadata.create_all(engine)

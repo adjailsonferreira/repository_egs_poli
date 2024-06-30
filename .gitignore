@@ -2,9 +2,6 @@ __pycache__# Arquivos Python
 *.pyc
 __pycache__/
 
-# Arquivos de ambiente
-.env
-
 # Arquivos de log
 *.log
 

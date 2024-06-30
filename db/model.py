@@ -10,8 +10,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 db=SQLAlchemy(app)
 
-#pre-inscricao projetos
-class PreinscricaoProjeto(Base):
+#inscricao projetos
+class inscricaoProjeto(Base):
   __tablename__ = 'preinscricao_projeto'
   id = db.Column(db.Integer, primary_key=True)
   nome = db.Column(db.String(244))

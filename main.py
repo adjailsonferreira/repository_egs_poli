@@ -4,6 +4,10 @@ from dotenv import load_dotenv
 import os
 from config import config
 import requests
+from db.model import inscricaoProjeto
+from db.config_db import get_session
+from sqlalchemy.exc import SQLAlchemyError
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -12,14 +16,14 @@ auth = firebase.auth()
 app.secret_key = os.getenv("secret_key")
 user = auth.current_user
 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
+db=SQLAlchemy(app)
 
 
-@app.route("/")
-@app.route("/dashboard")
+@app.route("/", methods=['POST', 'GET'])
 def dashboard():
     return render_template("/views/dashboard/homepage.html")
 
-@app.route("/", methods=['POST', 'GET'])
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     if('user' in session):
@@ -85,6 +89,35 @@ def autenticar_usuario(token):
         return True
     else:
         return False
+
+@app.route("/inscricaoprojeto", methods=['POST', 'GET'])
+def inscricaoprojeto():
+    user_session = session.get('user')
+    if request.method == 'POST':
+        nome= request.form['nome']
+        equipe=request.form['equipe']
+        data=request.form['data']
+        cliente=request.form['cliente']
+        equipe=request.form['equipe']
+        tech=request.form['tech']
+        descricao=request.form['descricao']
+        link=request.form['link']
+        pitch=request.form['pitch']
+        logo=request.form['logo']
+        
+        try: 
+            tabela=inscricaoProjeto(nome,equipe,data,cliente,equipe,tech,descricao,link,pitch,logo)
+            db.session.add(tabela)
+            db.session.commit()
+            app.logger.debug(f'Body Envio Projeto: {request.get_data()}')
+
+            return ("Sucesso")
+
+        except SQLAlchemyError as e:
+            db.session.rollback()
+            print(f"falha {e}")
+            return ("Falha")
+    return render_template("Sucesso")
 
 
 if __name__ in "__main__":
