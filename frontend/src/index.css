@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary-color: #1F7A8C;
   --light-color: #D8DBE2;
@@ -18,4 +19,8 @@
 
 .border-dark-color {
   border-color: var(--dark-color);
+}
+
+.bg-dark-color {
+  background-color: var(--dark-color);
 }

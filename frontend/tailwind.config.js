@@ -8,6 +8,23 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.blend-multiply': {
+          backgroundBlendMode: 'multiply',
+        },
+        '.bg-overlay': {
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          backgroundColor: '#24464D',
+          opacity: 0.70,
+        },
+      });
+    },
+  ],
 }
 
